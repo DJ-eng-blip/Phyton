@@ -1,0 +1,26 @@
+def teken_bord(bord):
+    print(bord[0] + " | " + bord[1] + " | " + bord[2])
+    print("---------")
+    print(bord[3] + " | " + bord[4] + " | " + bord[5])
+    print("---------")
+    print(bord[6] + " | " + bord[7] + " | " + bord[8])
+
+def positie_bepalen():
+    rij = int(input("Kies een rij (1-3): ")) - 1
+    kolom = int(input("Kies een kolom (1-3): ")) - 1
+    return kolom + 3 * rij
+
+bord = [" "] * 9
+teken_bord(bord)
+
+for beurt in range(9):
+    speler = "X" if beurt % 2 == 0 else "O"
+    print(f"Speler {speler} is aan zet.")
+    positie = positie_bepalen()
+    
+    if bord[positie] != " ":
+        print("Valsspeler! Beurt overslaan.")
+        continue
+
+    bord[positie] = speler
+    teken_bord(bord)
